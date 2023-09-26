@@ -157,9 +157,11 @@ c:\opt\ros\noetic\x64\setup.bat
 c:\ws\turtlebot3\devel\setup.bat
 set TURTLEBOT3_MODEL=waffle
 ```
-2. roslaunch turtlebot3_demo.launch
-
-3. Subscribe to ros message and publish to Kafka
+2. Launch ros demo
+```
+roslaunch turtlebot3_demo.launch
+```
+4. Subscribe to ros message and publish to Kafka
 ```
 import rospy
 from nav_msgs.msg import Odometry
