@@ -84,6 +84,8 @@ sudo ${KAFKA_HOME}/bin/connect-distributed.sh ${KAFKA_HOME}/config/connect-distr
 sudo netstat -tulpn
 ${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server 35.200.197.249:9092   --partitions 1   --replication-factor 1
 sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootstrap-server 35.200.197.249:9092
+```
+
 2. Send some message
 ```
 {'hi Spark': 'from kafka'}
