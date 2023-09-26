@@ -204,7 +204,7 @@ sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootst
 
 5. Submit your spark job to consume the message in a spark dataframe
 ```
-sudo nano sparkjob.py
+sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1 sparkjob.py localhost:9092 subscribe FirstTopic
 ```
   References: 
   <prev>
