@@ -83,7 +83,8 @@ sudo ${KAFKA_HOME}/bin/zookeeper-server-start.sh ${KAFKA_HOME}/config/zookeeper.
 sudo ${KAFKA_HOME}/bin/kafka-server-start.sh ${KAFKA_HOME}/config/server.properties > ${KAFKA_HOME}/logs/broker1.log 2>&1 &
 sudo ${KAFKA_HOME}/bin/connect-distributed.sh ${KAFKA_HOME}/config/connect-distributed.properties > ${KAFKA_HOME}/logs/connect.log 2>&1 &
 sudo netstat -tulpn
-${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server localhost:9092   --partitions 1   --replication-factor 1
+sudo ${KAFKA_HOME}/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+sudo ${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server localhost:9092   --partitions 1   --replication-factor 1
 sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootstrap-server localhost:9092
 ```
 
@@ -147,6 +148,60 @@ if __name__ == "__main__":
  ```
 sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1 sparkjob.py localhost:9092 subscribe FirstTopic
 ```
+ROS-Kafka-Pypark Integration
+1. Start ROS Terminal
+```
+c:\opt\ros\noetic\x64\setup.bat
+c:\ws\turtlebot3\devel\setup.bat
+set TURTLEBOT3_MODEL=waffle
+```
+2. roslaunch turtlebot3_demo.launch
+3. Subscribe to ros message and publish to Kafka
+```
+import rospy
+from nav_msgs.msg import Odometry
+import json
+from datetime import datetime
+from kafka import KafkaProducer
+
+count = 0
+def callback(msg):
+    global count
+    messages={
+        "id":count,
+        "posex":float("{0:.5f}".format(msg.pose.pose.position.x)),
+        "posey":float("{0:.5f}".format(msg.pose.pose.position.y)),
+        "posez":float("{0:.5f}".format(msg.pose.pose.position.z)),
+        "orientx":float("{0:.5f}".format(msg.pose.pose.orientation.x)),
+        "orienty":float("{0:.5f}".format(msg.pose.pose.orientation.y)),
+        "orientz":float("{0:.5f}".format(msg.pose.pose.orientation.z)),
+        "orientw":float("{0:.5f}".format(msg.pose.pose.orientation.w))
+        }
+
+    print(f"Producing message {datetime.now()} Message :\n {str(messages)}")
+    producer.send("FirstTopic",messages)
+    count+=1
+
+    producer = KafkaProducer(
+    bootstrap_servers=["localhost:9092"],
+    value_serializer=lambda message: json.dumps(message).encode('utf-8')
+)
+
+4. Open New terminal/VM Instance
+   You can also consume the message at kafka consumer
+```
+sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
+```
+5. Submit your spark job to consume the message in a spark dataframe
+```
+sudo nano sparkjob.py
+```
+if __name__=="__main__":
+
+    rospy.init_node('odomSubscriber', anonymous=True)
+    rospy.Subscriber('odom',Odometry,callback)
+    rospy.spin()
+``` 
   References: 
   <prev>
   1. https://sandeepkattepogu.medium.com/python-spark-transformations-on-kafka-data-8a19b498b32c
