@@ -30,19 +30,19 @@ sudo ${KAFKA_HOME}/bin/connect-distributed.sh ${KAFKA_HOME}/config/connect-distr
 ```
 8. Create Topic in KAFKA
 ```
-${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server Your.VM.External.IP:9092   --partitions 1   --replication-factor 1   --config "cleanup.policy=compact"   --config "retention.ms=604800000"   --config "segment.bytes=1073741824"
+${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server localhost:9092   --partitions 1   --replication-factor 1   --config "cleanup.policy=compact"   --config "retention.ms=604800000"   --config "segment.bytes=1073741824"
 ```
 9. Test Kafka.
     
 Produce something
 ```
-sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootstrap-server Your.VM.External.IP:9092   --property "acks=all"   --property "compression.type=gzip"   --property "batch.size=16384"   --property "parse.key=true"   --property "key.separator=:"
+sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --property "acks=all"   --property "compression.type=gzip"   --property "batch.size=16384"   --property "parse.key=true"   --property "key.separator=:"
 ```
 You can enter {'hi':"kafka"}
 
 Subscribe
 ```
-sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server Your.VM.External.IP:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
+sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
 ```
 10. Install jdk
 ```
@@ -82,8 +82,8 @@ sudo ${KAFKA_HOME}/bin/zookeeper-server-start.sh ${KAFKA_HOME}/config/zookeeper.
 sudo ${KAFKA_HOME}/bin/kafka-server-start.sh ${KAFKA_HOME}/config/server.properties > ${KAFKA_HOME}/logs/broker1.log 2>&1 &
 sudo ${KAFKA_HOME}/bin/connect-distributed.sh ${KAFKA_HOME}/config/connect-distributed.properties > ${KAFKA_HOME}/logs/connect.log 2>&1 &
 sudo netstat -tulpn
-${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server Your.VM.External.IP:9092   --partitions 1   --replication-factor 1
-sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootstrap-server Your.VM.External.IP:9092
+${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server localhost:9092   --partitions 1   --replication-factor 1
+sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootstrap-server localhost:9092
 ```
 
 2. Send some message
@@ -94,7 +94,7 @@ sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootst
 3. Open New terminal/VM Instance
    You can also consume the message at kafka consumer
 ```
-sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server Your.VM.External.IP:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
+sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
 ```
 5. Submit your spark job to consume the message in a spark dataframe
 ```
