@@ -1,8 +1,8 @@
 # Ros_Python_Kafka_Spark
 
-My command list to Integrate Ros Python Kafka and Spark for Streaming Data analytics
+## My command list to Integrate Ros Python Kafka and Spark for Streaming Data analytics
 
-Below are the Steps
+### Below are the Steps
 
 1. Create a Google Cloud VM Instance with machine type e2-medium or higher.
 2. Intall jdk and wget
@@ -31,7 +31,7 @@ sudo ${KAFKA_HOME}/bin/connect-distributed.sh ${KAFKA_HOME}/config/connect-distr
 ```
 8. Create Topic in KAFKA
 ```
-${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server localhost:9092   --partitions 1   --replication-factor 1   --config "cleanup.policy=compact"   --config "retention.ms=604800000"   --config "segment.bytes=1073741824"
+sudo ${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server localhost:9092   --partitions 1   --replication-factor 1   --config "cleanup.policy=compact"   --config "retention.ms=604800000"   --config "segment.bytes=1073741824"
 ```
 9. Test Kafka.
     
@@ -76,7 +76,7 @@ PYSPARK_PYTHON=/usr/bin/python3
 PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 ```
 
-Test
+### Test
 1. Start Kafka
 ```
 sudo ${KAFKA_HOME}/bin/zookeeper-server-start.sh ${KAFKA_HOME}/config/zookeeper.properties > ${KAFKA_HOME}/logs/zookeeper.log 2>&1 &
@@ -149,7 +149,7 @@ if __name__ == "__main__":
 sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1 sparkjob.py localhost:9092 subscribe FirstTopic
 ```
 
-ROS-Kafka-Pypark Integration
+### Integration of ROS Python - Kafka - Pypark 
 
 1. Start ROS Terminal
 ```
