@@ -211,4 +211,5 @@ sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kaf
   References: 
   <prev>
   1. https://sandeepkattepogu.medium.com/python-spark-transformations-on-kafka-data-8a19b498b32c
+  2. https://github.com/zekeriyyaa/PySpark-Structured-Streaming-ROS-Kafka-ApacheSpark-Cassandra?ref=pythonrepo.com
   <prev>
