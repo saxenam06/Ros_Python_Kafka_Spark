@@ -65,10 +65,13 @@ sudo cp -r spark-3.0.1-bin-hadoop2.7/* /etc/spark/;
 ```
 sudo cp /etc/spark/conf/spark-env.sh.template /etc/spark/conf/spark-env.sh;
 sudo nano /etc/spark/conf/spark-env.sh;
+```
+
 with following lines at the end of spark-env.sh
 ```
 PYSPARK_PYTHON=/usr/bin/python3
 PYSPARK_DRIVER_PYTHON=/usr/bin/python3
+```
 
 Test
 1. Start Kafka
