@@ -6,8 +6,7 @@ Below are the Steps
 1. Create a Google Cloud VM Instance with machine type e2-medium or higher.
 2.Intall jdk and wget
 ''' sudo apt install default-jdk
-    sudo apt install wget
-'''
+    sudo apt install wget'''
 3. Install Kafka
 '''wget https://archive.apache.org/dist/kafka/3.5.0/kafka_2.12-3.5.0.tgz
    tar -xvzf kafka_2.12-3.5.0.tgz
