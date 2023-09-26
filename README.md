@@ -38,6 +38,7 @@ Produce something
 sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootstrap-server Your.VM.External.IP:9092   --property "acks=all"   --property "compression.type=gzip"   --property "batch.size=16384"   --property "parse.key=true"   --property "key.separator=:"
 ```
 You can enter {'hi':"kafka"}
+
 Subscribe
 ```
 sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server Your.VM.External.IP:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
