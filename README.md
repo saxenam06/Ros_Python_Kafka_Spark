@@ -186,7 +186,7 @@ def callback(msg):
     count+=1
 
     producer = KafkaProducer(
-    bootstrap_servers=["localhost:9092"],
+    bootstrap_servers=["Your.VM.External.IP:9092"],
     value_serializer=lambda message: json.dumps(message).encode('utf-8')
 )
 if __name__=="__main__":
