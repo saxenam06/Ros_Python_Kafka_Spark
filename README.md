@@ -49,20 +49,20 @@ sudo apt-get update -y;
 sudo apt-get install openjdk-8-jdk -y;
 ```
 
-12. Download and Extract Spark files
+11. Download and Extract Spark files
 ```
 wget https://archive.apache.org/dist/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz;
 tar -xvzf spark-3.0.1-bin-hadoop2.7.tgz;
 ```
 
-13. Move files to /etc
+12. Move files to /etc
 ```
 sudo mkdir /etc/spark;
 sudo chown -R ubuntu /etc/spark;
 sudo cp -r spark-3.0.1-bin-hadoop2.7/* /etc/spark/;
 ```
  
-15. Update Spark env file
+13. Update Spark env file
 ```
 sudo cp /etc/spark/conf/spark-env.sh.template /etc/spark/conf/spark-env.sh;
 sudo nano /etc/spark/conf/spark-env.sh;
