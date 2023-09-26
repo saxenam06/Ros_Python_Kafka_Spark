@@ -189,6 +189,11 @@ def callback(msg):
     bootstrap_servers=["localhost:9092"],
     value_serializer=lambda message: json.dumps(message).encode('utf-8')
 )
+if __name__=="__main__":
+
+    rospy.init_node('odomSubscriber', anonymous=True)
+    rospy.Subscriber('odom',Odometry,callback)
+    rospy.spin()
 ```
 
 4. Open New terminal/VM Instance
@@ -201,12 +206,6 @@ sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootst
 ```
 sudo nano sparkjob.py
 ```
-if __name__=="__main__":
-
-    rospy.init_node('odomSubscriber', anonymous=True)
-    rospy.Subscriber('odom',Odometry,callback)
-    rospy.spin()
-``` 
   References: 
   <prev>
   1. https://sandeepkattepogu.medium.com/python-spark-transformations-on-kafka-data-8a19b498b32c
