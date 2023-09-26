@@ -60,6 +60,7 @@ tar -xvzf spark-3.0.1-bin-hadoop2.7.tgz;
 sudo mkdir /etc/spark;
 sudo chown -R ubuntu /etc/spark;
 sudo cp -r spark-3.0.1-bin-hadoop2.7/* /etc/spark/;
+```
  
 15. Update Spark env file
 ```
