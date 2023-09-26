@@ -4,8 +4,7 @@ Integrate Ros Python Kafka and Spark for Streaming Data analytics
 Below are the Steps
 
 1. Create a Google Cloud VM Instance with machine type e2-medium or higher.
-   
-2.Intall jdk and wget
+2. Intall jdk and wget
 ```
 sudo apt install default-jdk
 sudo apt install wget
