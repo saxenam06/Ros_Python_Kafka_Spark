@@ -97,7 +97,7 @@ sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootst
 ```
 
 3. Open New terminal/VM Instance. 
-   You can now also check to consume the message at kafka consumer
+   You can now also check to consume the message at kafka.
 ```
 sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
 ```
