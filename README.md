@@ -101,7 +101,7 @@ sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootst
 ```
 sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
 ```
-5. Submit your spark job to consume the message in a spark dataframe
+5. Prepare your spark job submit file to consume the message in a spark dataframe
 ```
 sudo nano sparkjob.py
 ```
