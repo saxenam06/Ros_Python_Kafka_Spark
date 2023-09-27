@@ -79,7 +79,7 @@ PYSPARK_PYTHON=/usr/bin/python3
 PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 ```
 
-### Test Integration KAFKA
+### Test Integration with KAFKA
 1. Start Kafka
 ```
 sudo ${KAFKA_HOME}/bin/zookeeper-server-start.sh ${KAFKA_HOME}/config/zookeeper.properties > ${KAFKA_HOME}/logs/zookeeper.log 2>&1 &
