@@ -41,10 +41,13 @@ sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootst
 ```
 You can enter {'hi':"kafka"}
 
-Subscribe
+Subscribe and Check message
 ```
 sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
 ```
+
+### Install Spark and integrate with KAFKA
+
 10. Install jdk
 ```
 sudo apt-get update -y;
