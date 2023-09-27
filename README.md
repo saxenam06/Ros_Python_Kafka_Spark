@@ -46,7 +46,7 @@ Subscribe and Check message
 sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
 ```
 
-### Install Spark and integrate with KAFKA
+### Install Spark 
 
 10. Install jdk
 ```
@@ -79,7 +79,7 @@ PYSPARK_PYTHON=/usr/bin/python3
 PYSPARK_DRIVER_PYTHON=/usr/bin/python3
 ```
 
-### Test
+### Test Integration KAFKA
 1. Start Kafka
 ```
 sudo ${KAFKA_HOME}/bin/zookeeper-server-start.sh ${KAFKA_HOME}/config/zookeeper.properties > ${KAFKA_HOME}/logs/zookeeper.log 2>&1 &
