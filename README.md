@@ -22,6 +22,7 @@ export KAFKA_HOME=/home/mani_dataops/youtubekafka/kafka_2.12-3.5.0
 ```
 5. Start Zookeeper
 ```
+sudo netstat -tulpn
 sudo ${KAFKA_HOME}/bin/zookeeper-server-start.sh ${KAFKA_HOME}/config/zookeeper.properties > ${KAFKA_HOME}/logs/zookeeper.log 2>&1 &
 ```
 6. Start Kafka
