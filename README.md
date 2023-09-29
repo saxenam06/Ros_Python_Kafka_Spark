@@ -29,11 +29,11 @@ sudo ${KAFKA_HOME}/bin/zookeeper-server-start.sh ${KAFKA_HOME}/config/zookeeper.
 sudo ${KAFKA_HOME}/bin/kafka-server-start.sh ${KAFKA_HOME}/config/server.properties > ${KAFKA_HOME}/logs/broker1.log 2>&1 &
 sudo ${KAFKA_HOME}/bin/connect-distributed.sh ${KAFKA_HOME}/config/connect-distributed.properties > ${KAFKA_HOME}/logs/connect.log 2>&1 &
 ```
-8. Create Topic in KAFKA
+7. Create Topic in KAFKA
 ```
 sudo ${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server localhost:9092   --partitions 1   --replication-factor 1   --config "cleanup.policy=compact"   --config "retention.ms=604800000"   --config "segment.bytes=1073741824"
 ```
-9. Test Kafka.
+8. Test Kafka.
     
 Produce something
 ```
@@ -43,31 +43,32 @@ You can enter {'hi':"kafka"}
 
 Subscribe and Check message
 ```
+sudo ${KAFKA_HOME}/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --from-beginning   --max-messages 100   --property "print.key=true"   --property "print.value=true"
 ```
 
 ### Install Spark 
 
-10. Install jdk
+1. Install jdk
 ```
 sudo apt-get update -y;
 sudo apt-get install openjdk-8-jdk -y;
 ```
 
-11. Download and Extract Spark files
+2. Download and Extract Spark files
 ```
 wget https://archive.apache.org/dist/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz;
 tar -xvzf spark-3.0.1-bin-hadoop2.7.tgz;
 ```
 
-12. Move files to /etc
+3. Move files to /etc
 ```
 sudo mkdir /etc/spark;
 sudo chown -R ubuntu /etc/spark;
 sudo cp -r spark-3.0.1-bin-hadoop2.7/* /etc/spark/;
 ```
  
-13. Update Spark env file
+4. Update Spark env file
 ```
 sudo cp /etc/spark/conf/spark-env.sh.template /etc/spark/conf/spark-env.sh;
 sudo nano /etc/spark/conf/spark-env.sh;
@@ -88,8 +89,8 @@ sudo ${KAFKA_HOME}/bin/connect-distributed.sh ${KAFKA_HOME}/config/connect-distr
 sudo netstat -tulpn
 sudo ${KAFKA_HOME}/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 sudo ${KAFKA_HOME}/bin/kafka-topics.sh   --create   --topic FirstTopic   --bootstrap-server localhost:9092   --partitions 1   --replication-factor 1
-sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --property "acks=all"   --property "compression.type=gzip"   --property "batch.size=16384"   --property "parse.key=true"   --property "key.separator=:"```
-
+sudo ${KAFKA_HOME}/bin/kafka-console-producer.sh   --topic FirstTopic   --bootstrap-server localhost:9092   --property "acks=all"   --property "compression.type=gzip"   --property "batch.size=16384"   --property "parse.key=true"   --property "key.separator=:"
+```
 2. Send some message
 ```
 {'hi Spark': 'from kafka'}
