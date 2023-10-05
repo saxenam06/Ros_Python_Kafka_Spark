@@ -215,9 +215,15 @@ sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kaf
 
 ### Integration with PostgreSQL
 1. Install docker
-2. sudo 
-3. sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mypass -v postgres:/var/lib/po stgresql/data -p 5432:5432 -d postgres
-  References: 
+2. Pull postgres image
+```
+   sudo docker pull postgres
+```
+3. Run Docker image
+```
+   sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mypass -v postgres:/var/lib/po stgresql/data -p 5432:5432 -d postgres
+```
+References: 
   <prev>
   1. https://sandeepkattepogu.medium.com/python-spark-transformations-on-kafka-data-8a19b498b32c
   2. https://github.com/zekeriyyaa/PySpark-Structured-Streaming-ROS-Kafka-ApacheSpark-Cassandra?ref=pythonrepo.com
