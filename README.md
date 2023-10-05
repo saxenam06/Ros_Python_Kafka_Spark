@@ -209,12 +209,14 @@ sudo ${KAFKA_HOME}/bin/kafka-console-consumer.sh   --topic FirstTopic   --bootst
 ```
 
 5. Submit your spark job to consume the message in a spark dataframe
-
-### Integration with PostgreSQL
-sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mypass -v postgres:/var/lib/postgresql/data -p 5432:5432 -d postgres
 ```
 sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1 sparkjob.py localhost:9092 subscribe FirstTopic
 ```
+
+### Integration with PostgreSQL
+1. Install docker
+2. sudo 
+3. sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mypass -v postgres:/var/lib/po stgresql/data -p 5432:5432 -d postgres
   References: 
   <prev>
   1. https://sandeepkattepogu.medium.com/python-spark-transformations-on-kafka-data-8a19b498b32c
