@@ -223,6 +223,10 @@ sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kaf
 ```
    sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mypass -v postgres:/var/lib/po stgresql/data -p 5432:5432 -d postgres
 ```
+4. Submit Spark Job to write to postgresql
+```  
+sudo /etc/spark/bin/spark-submit --packages org.postgresql:postgresql:42.6.0 spark_postgres_demo.py 
+```
 References: 
   <prev>
   1. https://sandeepkattepogu.medium.com/python-spark-transformations-on-kafka-data-8a19b498b32c
