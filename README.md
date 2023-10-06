@@ -220,6 +220,7 @@ sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kaf
    sudo docker pull postgres
    sudo docker ps -a
    sudo start image_id
+   sudo docker exec -it image_id
 ```
 3. Run Docker image
 ```
