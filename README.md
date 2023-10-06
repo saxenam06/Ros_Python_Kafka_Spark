@@ -215,16 +215,18 @@ sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kaf
 
 ### Integration with PostgreSQL
 1. Install docker
-2. Pull postgres image
+2. Run Docker image
+```
+   sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mypass -v postgres:/var/lib/po stgresql/data -p 5432:5432 -d postgres
+   sudo docker ps -a
+   sudo start image_id
+
+```
+
+3. Pull postgres image if not available
 ```
    sudo docker pull postgres
-   sudo docker ps -a
    ```
-3. Run Docker image
-```
-   sudo start image_id
-   sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mypass -v postgres:/var/lib/po stgresql/data -p 5432:5432 -d postgres
-```
 4. Execute doceker, connect to postgres and write a table
 
 ```
