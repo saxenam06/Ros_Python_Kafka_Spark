@@ -219,13 +219,20 @@ sudo /etc/spark/bin/spark-submit --packages org.apache.spark:spark-streaming-kaf
 ```
    sudo docker pull postgres
    sudo docker ps -a
-   sudo start image_id
-   sudo docker exec -it image_id
-```
+   ```
 3. Run Docker image
 ```
+   sudo start image_id
    sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mypass -v postgres:/var/lib/po stgresql/data -p 5432:5432 -d postgres
 ```
+4. Execute doceker, connect to postgres and write a table
+
+```
+   sudo docker exec -it image_id
+   psql -U postgres -W
+   create table traffic(id text, ...)
+```
+
 4. Submit Spark Job to write to postgresql
 ```  
 sudo /etc/spark/bin/spark-submit --packages org.postgresql:postgresql:42.6.0 spark_postgres_demo.py 
