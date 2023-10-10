@@ -2,7 +2,7 @@
 
 ## My command list to Integrate Ros Python Kafka and Spark for Streaming Data analytics
 
-### Below are the Steps
+### Install Kafka
 
 1. Create a Google Cloud VM Instance with machine type e2-medium or higher.
 2. Intall jdk and wget
